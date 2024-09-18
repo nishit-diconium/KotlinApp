@@ -1,5 +1,5 @@
-# Step 1: Build the application with JDK 17
-FROM gradle:7.3.3-jdk17 AS builder
+# Step 1: Build the application with JDK 17 and Gradle 7.6
+FROM gradle:7.6-jdk17 AS builder
 WORKDIR /app
 COPY . .
 RUN gradle build --no-daemon
