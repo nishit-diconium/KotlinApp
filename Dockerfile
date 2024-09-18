@@ -5,7 +5,7 @@ COPY . .
 RUN gradle build --no-daemon
 
 # Step 2: Create a smaller image with JRE 17
-FROM openjdk:17-jre-slim
+FROM openjdk:17-slim
 WORKDIR /app
 COPY --from=builder /app/build/libs/*.jar /app/app.jar
 ENTRYPOINT ["java", "-jar", "/app/app.jar"]
