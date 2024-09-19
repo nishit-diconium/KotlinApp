@@ -8,7 +8,7 @@ plugins {
 
 group = "com.example"
 version = "0.0.1-SNAPSHOT"
-java.sourceCompatibility = JavaVersion.VERSION_11
+java.sourceCompatibility = JavaVersion.VERSION_17
 repositories {
     mavenCentral()
 }
@@ -28,7 +28,7 @@ dependencies {
     implementation("com.squareup.okhttp3:logging-interceptor:4.9.2")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
     //Dependency Injection
-    implementation("io.insert-koin:koin-android:3.3.0")
+    implementation("io.insert-koin:koin-android:3.1.2")
     implementation("io.insert-koin:koin-core-jvm:3.2.2")
 
     testImplementation("org.mockito:mockito-core:4.1.0")
