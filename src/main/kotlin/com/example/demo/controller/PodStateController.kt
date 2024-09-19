@@ -14,7 +14,7 @@ class PodStateController(private val repository: PodStateRepository) {
     fun getAllPods(): List<PodState> = repository.findAll()
 
     @GetMapping("/{name}")
-    fun getPodByName(@PathVariable name: String): PodState? = repository.findByPodName(name)
+    suspend fun getPodByName(@PathVariable name: String): PodState? = repository.findByPodName(name)
 
     @PostMapping
     fun savePod(@RequestBody podState: PodState): PodState {
@@ -24,7 +24,7 @@ class PodStateController(private val repository: PodStateRepository) {
 
     @PutMapping("/{name}/status")
     @Transactional
-    fun updatePodStatus(@PathVariable name: String, @RequestParam status: String): PodState {
+    suspend fun updatePodStatus(@PathVariable name: String, @RequestParam status: String): PodState {
         val pod = repository.findByPodName(name) ?: throw RuntimeException("Pod not found")
         pod.status = status
         pod.lastChecked = LocalDateTime.now()
