@@ -8,8 +8,7 @@ plugins {
 
 group = "com.example"
 version = "0.0.1-SNAPSHOT"
-java.sourceCompatibility = JavaVersion.VERSION_17
-
+java.sourceCompatibility = JavaVersion.VERSION_11
 repositories {
     mavenCentral()
 }
@@ -22,6 +21,18 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core")
     implementation("com.h2database:h2")
+    // Stetho library for debug network calls
+    implementation("com.facebook.stetho:stetho-okhttp3:1.5.1")
+    //Retrofit
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.9.2")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    //Dependency Injection
+    implementation("io.insert-koin:koin-android:3.3.0")
+    implementation("io.insert-koin:koin-core-jvm:3.2.2")
+
+    testImplementation("org.mockito:mockito-core:4.1.0")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.5.2")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 
