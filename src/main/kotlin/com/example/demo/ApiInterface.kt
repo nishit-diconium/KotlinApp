@@ -8,7 +8,6 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.*
 import java.util.concurrent.TimeUnit
-import com.facebook.stetho.okhttp3.StethoInterceptor
 
 interface ApiInterface {
 
@@ -37,13 +36,12 @@ interface ApiInterface {
         fun create(): ApiInterface {
             val builder = OkHttpClient.Builder()
             builder.addInterceptor(AuthorizationInterceptor())
-                .addNetworkInterceptor(StethoInterceptor())
                 .callTimeout(60, TimeUnit.SECONDS)
                 .writeTimeout(60, TimeUnit.SECONDS)
                 .readTimeout(60, TimeUnit.SECONDS)
                 .retryOnConnectionFailure(true)
-                .addInterceptor(if (BuildConfig.DEBUG) HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
-                else HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.NONE))
+                .addInterceptor( HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
+                )
             val retrofit = Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
                 .baseUrl(BASE_URL)
